@@ -1,4 +1,3 @@
-#Warning - this seems to have some dependency 
 import sounddevice as sd
 import time,glob,numpy,random
 import subprocess
@@ -28,7 +27,6 @@ def play_song(fname):
     ff=open('/dev/null','w')
     dd=subprocess.check_output(to_exec,stderr=ff,shell=True) #this calls faad to do the heavy lifting 
     ff.close()
-    #dd=dd.decode('ascii')
     dat=numpy.frombuffer(dd,dtype='float32') #convert string output from faad into numpy array
     nchan=numpy.int(nchan)
     dat=numpy.reshape(dat,[len(dat)//nchan,nchan])
