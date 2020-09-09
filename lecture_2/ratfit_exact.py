@@ -24,13 +24,26 @@ def rat_fit(x,y,n,m):
     return p,q
 
 
+#1*p0 + x*p1 +x**2+p2+... -q1*x - q2*x**2... = y
+
 n=4
-m=5
-x=np.linspace(-2,2,n+m-1)
+m=7
+x=np.linspace(-3,3,n+m-1)
 y=np.exp(-0.5*x**2)
 p,q=rat_fit(x,y,n,m)
-pred=rat_eval(p,q,x)
+xx=np.linspace(5*x[0],5*x[-1],1001)
+y_true=np.exp(-0.5*xx**2)
+pred=rat_eval(p,q,xx)
+plt.clf();plt.plot(x,y,'*')
+plt.plot(xx,y_true)
+plt.plot(xx,pred)
 
+fitp=np.polyfit(x,y,n+m-1)
+pred_poly=np.polyval(fitp,xx)
+
+plt.clf();plt.plot(x,y,'*');plt.plot(xx,y_true);plt.plot(xx,pred)
+
+assert(1==0)
 
 xx=np.linspace(-2,2,1001)
 yy=np.exp(-0.5*xx**2)
