@@ -33,7 +33,7 @@ if False:
     x1=0.5
     x0=-x1
     truth=math.erf(np.sqrt(0.5)*x1)*np.sqrt(2*np.pi)
-if False:
+if True:
     fun=lorentzian
     x0=-1
     x1=1
@@ -49,10 +49,13 @@ for i in range(len(n)):
 #if we evaluate this polynomial with dx=0 (i.e. first coefficient)
 #we have our extrapolated answer
 
+
+#for romber, anser=truth+c_4*dx**4+c_5*dx**5+...
 mat=np.zeros([len(n),len(n)])
 mat[:,0]=1 #the first column corresponds to the dx**0 term, which is what we want
 dx=(x1-x0)/(n-1)
 for i in range(1,len(n)):
     mat[:,i]=dx**(3+i) #we know Simpson's rule kills off the linear, quadratic, and cubit terms, so start at quartic
 fitp=np.dot(np.linalg.inv(mat),area)
+
 print('area in romberg extrapolation is ',fitp[0]-truth)
