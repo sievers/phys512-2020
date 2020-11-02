@@ -1,6 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
+
 def get_forces(x,soft=0.01,do_pot=False):
     f=np.zeros(x.shape)
     nx=x.shape[0]
@@ -56,7 +57,6 @@ def take_step_rk4(x,v,dt):
     k3=get_derivs(xx+k2*dt/2)
     k4=get_derivs(xx+k3*dt)
     
-
     tot=(k1+2*k2+2*k3+k4)/6
     
 
@@ -71,21 +71,24 @@ x[0,0]=1
 x[1,0]=-1
 v[0,1]=0.25
 v[1,1]=-0.25
+v=0*v
 
 plt.ion()
 plt.clf()
-dt=0.03
+soft=0.01
+dt=soft**1.5*0.05
 for i in range(1000):
-    for i in range(11):
+    for i in range(1100):
         #x,v=take_step_better(x,v,dt)
         x,v=take_step_rk4(x,v,dt)
+        #x,v=take_step_simple(x,v,dt)
     f,pot=get_forces(x,do_pot=True)
     kin=np.sum(v**2)/2
     #print(kin,pot,kin-pot/2)
-
+    plt.clf()
     plt.plot(x[:,0],x[:,1],'b.')
     plt.axis([-2,2,-2,2])
-    plt.pause(0.0001)
+    plt.pause(0.1)
 
     
 
