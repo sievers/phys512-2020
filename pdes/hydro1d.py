@@ -128,8 +128,8 @@ if __name__=='__main__':
     #plt.plot(fluid.p)
 
     #fluid.ic_bullet()
-    fluid.ic_2bullet()
-    #fluid.ic_shock_tube()
+    #fluid.ic_2bullet()
+    fluid.ic_shock_tube()
 
 
     plt.plot(fluid.rho)
