@@ -54,7 +54,8 @@ p=r.copy()
 for k in range(n):
     #Ap=(Ax(pad(p),mask))
     Ap=Ax(p,mask)
-    rtr=np.sum(r*r)
+    #rtr=np.sum(r*r)
+    rtr=np.sum(p*r)
     print('on iteration ' + repr(k) + ' residual is ' + repr(rtr))
     alpha=rtr/np.sum(Ap*p)
 
