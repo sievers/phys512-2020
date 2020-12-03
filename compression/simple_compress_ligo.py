@@ -194,3 +194,6 @@ write_lp('ligo_lp.dat',coeffs,delt,scale_fac)
 
 #aa,bb,cc=read_lp('ligo_lp.dat')
 mystrain=read_lp('ligo_lp.dat',True)
+
+#plt.clf();plt.plot(strain[100:200]);plt.plot(strain[100:200],'*');plt.plot(pred[100:200]*scale_fac,'o');plt.show()
+#plt.savefig('ligo_lp_zoon.png')
